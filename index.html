@@ -42,10 +42,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "brand_name": "Raj Fashion",
     "page_url": "index.html"
   };
-  document.addEventListener('click', function(event) {
-    utag_data['element_clicked'] = event.target.tagName;
-    console.log(utag_data);
-  });
+  // Function to create a data layer variable (DLV) for better maintainability
+function createDLV(name, type, fields) {
+  utag_data[name] = {
+    type: type,
+    // Add fields based on the provided structure
+  };
+  if (fields) {
+    Object.assign(utag_data[name], fields); // Efficient field assignment
+  }
+}
+
+// Create data layer variables
+createDLV('pageView', 'object', {
+  'event_type': 'pageview',  // Ensure lowercase for consistency
+  'page_url': '{{URL}}'
+});
+
+createDLV('linkClick', 'object', {
+  'event_type': 'linkclick',  // Ensure lowercase for consistency
+  'href': '{{Element.href}}',
+  'text': '{{Element.textContent.trim()}}'  // Capture link text (optional)
+});
+
 </script>
 
         <!-- Loading script asynchronously -->
