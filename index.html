@@ -32,6 +32,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script type="text/javascript">
   var utag_data = {
     "page_name": "Raj Fashion",
+    "pageType": document.title,
+    "pageURL": window.location.href,
+    "timestamp": new Date().getTime(),
     "site_section": "Home",
     "user_type": "new visitor",
     "product_category": "Fashion",
@@ -39,6 +42,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "brand_name": "Raj Fashion",
     "page_url": "index.html"
   };
+    document.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      // Update data layer object with link information
+      utag_data.linkClick = {
+        'href': this.href,  // Link URL
+        'text': this.textContent.trim()  // Link text content (optional)
+      };
+    });
+  });
 </script>
 
         <!-- Loading script asynchronously -->
