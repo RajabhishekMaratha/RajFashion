@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   // Function to create a data layer variable (DLV) for better maintainability
 function createDLV(name, type, fields) {
   utag_data[name] = {
-    type: event_type,
+    type: type,
     // Add fields based on the provided structure
   };
   if (fields) {
